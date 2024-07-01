@@ -15,6 +15,7 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 -- greatest remap ever
+keymap.set("v", "<leader>p", "\"_dP")
 keymap.set("x", "<leader>p", "\"_dP")
 
 -- next greatest remap ever : asbjornHaland
@@ -41,11 +42,12 @@ keymap.set("n", "-", ":Explore<CR>")
 keymap.set("n", "tn", ":tab new<CR>")
 
 -- Remove and reapply numbers
-keymap.set("n" ,"<leader>no", ":set nonumber nornu<CR>")
-keymap.set("n" ,"<leader>ni", ":set nu rnu<CR>")
+keymap.set("n", "<leader>no", ":set nonumber nornu<CR>")
+keymap.set("n", "<leader>ni", ":set nu rnu<CR>")
 
 -- Floating session switcher
 keymap.set("n", "<leader>ss", ":!tmux popup -E bash tmux-sessionizer.sh<CR>")
+keymap.set("n", "<space>ss", ":!tmux popup -E bash tmux-sessionizer.sh<CR>")
 
 -- Automatic start command for rust, bash, and dotnet
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -69,7 +71,7 @@ keymap.set("n", "<leader>ss", ":!tmux popup -E bash tmux-sessionizer.sh<CR>")
 
 -- Open last search in quickfix list
 keymap.set("n", "<leader>C", ":vim // * | :copen<CR>")
--- only the current file in search 
+-- only the current file in search
 keymap.set("n", "<leader>c", ":vim // % | :copen<CR>")
 
 -- quickfix keymaps
@@ -85,8 +87,10 @@ keymap.set("n", "<space>N", ":cprev<CR>")
 -- Splits
 keymap.set("n", "<C-w>%", ":vsplit<C-m>")
 keymap.set("n", "<C-w>\"", ":split<C-m>")
-keymap.set("n", "<space>ss", ":split<CR>", opts)
+keymap.set("n", "<space>sh", ":split<CR>", opts)
 keymap.set("n", "<space>sv", ":vsplit<CR>", opts)
+keymap.set("n", "<space>s%", ":split<CR>", opts)
+keymap.set("n", "<space>s\"", ":vsplit<CR>", opts)
 keymap.set("n", "<space>sh", "<C-w>h")
 keymap.set("n", "<space>sj", "<C-w>j")
 keymap.set("n", "<space>sk", "<C-w>k")
@@ -94,12 +98,12 @@ keymap.set("n", "<space>sl", "<C-w>l")
 keymap.set("n", "<space>so", "<C-w>o")
 
 -- Diagnostics
-keymap.set("n", "[e", function() vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR}) end)
-keymap.set("n", "]e", function() vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR}) end)
-keymap.set("n", "[w", function() vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.WARNING}) end)
-keymap.set("n", "]w", function() vim.diagnostic.goto_next({severity=vim.diagnostic.severity.WARNING}) end)
+keymap.set("n", "[e", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end)
+keymap.set("n", "]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end)
+keymap.set("n", "[w", function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARNING }) end)
+keymap.set("n", "]w", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARNING }) end)
 
--- Buffers 
+-- Buffers
 keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer", })
 keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer", })
 
@@ -110,3 +114,22 @@ keymap.set("v", "<space>vv", ":lua require('test-chat').replacellama()<CR>")
 keymap.set("n", "<space>v", ":lua require('test-chat').ask()<CR>")
 
 keymap.set("n", "<C-I>", "<C-I>")
+
+-- Surround
+keymap.set("n", "<space>\"", 'ciw"<C-r>""')
+keymap.set("n", "<space>'", 'ciw\'<C-r>"\'')
+keymap.set("n", "<space>}", 'ciw{<C-r>"}')
+keymap.set("n", "<space>]", 'ciw[<C-r>"]')
+keymap.set("n", "<space>)", 'ciw(<C-r>")')
+keymap.set("v", "<space>\"", 'c"<C-r>""')
+keymap.set("v", "<space>'", 'c\'<C-r>"\'')
+keymap.set("v", "<space>}", 'c{<C-r>"}')
+keymap.set("v", "<space>]", 'c[<C-r>"]')
+keymap.set("v", "<space>)", 'c(<C-r>")')
+
+-- insert
+keymap.set("n", "<space>id", ':read ! date<CR>')
+keymap.set("n", "<space>ip", ':read ! pwd<CR>')
+keymap.set("v", "<space>ij", ":read ! jq")
+
+keymap.set("v", "<space>ie", ":s/\\([\"´`']\\)/\\\\\\1/g")

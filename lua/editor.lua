@@ -1,13 +1,15 @@
 local opt = vim.opt
 
-opt.termguicolors = true -- Enable colors in terminal
-opt.hlsearch = true --Set highlight on search
-opt.number = true --Make line numbers default
+opt.pumheight = 10        --completion suggestions does not grow larger than 10
+
+opt.termguicolors = true  -- Enable colors in terminal
+opt.hlsearch = true       --Set highlight on search
+opt.number = true         --Make line numbers default
 opt.relativenumber = true --Make relative number default
-opt.breakindent = true --Enable break indent
-opt.undofile = true --Save undo history
-opt.ignorecase = true --Case insensitive searching unless /C or capital in search
-opt.smartcase = true -- Smart case
+opt.breakindent = true    --Enable break indent
+opt.undofile = true       --Save undo history
+opt.ignorecase = true     --Case insensitive searching unless /C or capital in search
+opt.smartcase = true      -- Smart case
 
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -34,4 +36,3 @@ vim.cmd [[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout= 100})
   augroup end
 ]]
-
