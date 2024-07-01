@@ -12,5 +12,4 @@ return {
     'mbbill/undotree',
     "sindrets/diffview.nvim",
     "folke/twilight.nvim",
-    'tpope/vim-dadbod',
 }
