@@ -1,5 +1,10 @@
 return {
     {
+        'Everblush/nvim',
+        name = 'everblush',
+        priority = 1000,
+    },
+    {
         "craftzdog/solarized-osaka.nvim",
         priority = 1000,
     },
