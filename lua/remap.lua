@@ -141,8 +141,8 @@ keymap.set("v", "<space>)", 'c(<C-r>")')
 -- insert
 keymap.set("n", "<space>id", ":read ! date<CR>")
 keymap.set("n", "<space>ip", ":read ! pwd<CR>")
+keymap.set("n", "<space>iz", ":r !fd -t file | fzf-tmux -p<CR>")
 keymap.set("v", "<space>ij", ":read ! jq")
-
 keymap.set("v", "<space>ie", ":s/\\([\"´`'$]\\)/\\\\\\1/g")
 
 --keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
