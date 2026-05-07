@@ -145,6 +145,8 @@ keymap.set("n", "<space>iz", ":r !fd -t file | fzf-tmux -p<CR>")
 keymap.set("v", "<space>ij", ":read ! jq")
 keymap.set("v", "<space>ie", ":s/\\([\"´`'$]\\)/\\\\\\1/g")
 
+keymap.set("v", "<space>ic", 'y:new <C-r>"<CR>')
+
 --keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 keymap.set("n", "<space>iJ", '_yiwA `json:"pb~A"`')
