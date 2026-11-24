@@ -188,6 +188,28 @@ return {
 			--  You can press `g?` for help in this menu
 			require("mason").setup()
 
+			-- Installed as a .NET global tool, independently of Mason's registry.
+			local csharp = vim.fn.expand("~/.dotnet/tools/csharp-ls")
+			if vim.fn.executable(csharp) == 1 then
+				vim.lsp.config("csharp_ls", {
+					cmd = function(dispatchers, config)
+						return vim.lsp.rpc.start({ csharp }, dispatchers, { cwd = config.root_dir })
+					end,
+					filetypes = { "cs" },
+					init_options = { AutomaticWorkspaceInit = true },
+					settings = { csharp = vim.empty_dict() },
+					get_language_id = function(_, ft) return ft == "cs" and "csharp" or ft end,
+					root_dir = function(bufnr, on_dir)
+						local root = vim.fs.root(bufnr, function(name)
+							return name:match("%.slnx?$") or name:match("%.csproj$")
+						end)
+						if root then on_dir(root) end
+					end,
+					capabilities = capabilities,
+				})
+				vim.lsp.enable("csharp_ls")
+			end
+
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
