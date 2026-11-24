@@ -13,10 +13,17 @@ return {
 		},
 		dashboard = {
 			sections = {
+				{ section = "header", padding = 1 },
 				{ section = "keys", gap = 1, padding = 1 },
 				{ section = "startup" },
 			},
 			preset = {
+				header = [[
+      ╭─────────────────╮
+      │  >_             │
+      ╰─────────────────╯
+            N E O V I M
+]],
 				keys = {
 					{ icon = " ", key = "p", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
